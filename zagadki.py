@@ -1,24 +1,9 @@
 import random
-import numpy as np
-
-# dictionary dla działań
-dzialania = {}
-dzialania[1] = []
-dzialania[2] = []
-dzialania[3] = []
-dzialania[4] = []
-dzialania_opis = ['dodawanie', 'odejmowanie', 'mnożenie', 'dzielenie']
-
-def l1wieksza(l1, l2):
-    if l1 >= l2:
-        return(l1, l2)
-    else:
-        return(l2, l1)
 
 maxl = 3
 liczby = [i for i in range(1, maxl+1)]
 
-print("Witaj!")
+print("\n\n\nWitaj!")
 print("Wylosuję dla Ciebie jakąś zagadkę matematyczną, zobaczymy czy potrafisz prawidłowo odpowiedzieć, hi, hi, hi!")
 print("Na razie znam tylo liczby: %s, ale jak będziesz dobrze odpowiadać poznam ich więcej!" % liczby)
 print("W każdej chwili możesz zakończyć wpisując \"koniec\", to zaczynajmy :)\n")
@@ -35,11 +20,8 @@ while (run):
     l2 = random.randint(1, maxl)
     
     # Losujemy działania matematyczne: 1+, 2-, 3*, 4/
-    # Aby dzielenia nie było za mało to mały boost! ;)
-    if (l2 != 0 and l1 % l2 == 0) or (l1 != 0 and l2 % l1 == 0):
-        # Jeśli dzielenie to większej liczby przez mniejszą dla Ninki
-        l1, l2 = l1wieksza(l1, l2)
-        dzialanie = 4
+    # Aby dzieleniania nie było mało to mały boost! ;)
+    if l1 % l2 == 0 and l2 != 1:
         correct = l1 / l2
         znak = '/'
     else:
@@ -63,12 +45,10 @@ while (run):
 
         elif int(odp) == correct:
             print("Brawo! tak to jest ta liczba, dzięki Tobie poznałem liczbę %s\n" % str(maxl+1))
-            dzialania[dzialanie].append(1)
             maxl += 1
             dobre += 1
             if maxl > rekord: rekord = maxl
         else:
-            dzialania[dzialanie].append(0)
             zle += 1
             if maxl > 3:
                 print("Ojej, nie udało się! Prawidłowy wynik to %s, zapominam liczbę %s :(\n" % (str(correct), str(maxl)))
@@ -81,4 +61,3 @@ while (run):
 if dobre + zle >= 1:
     print("Prawidłowe odpowiedzi: %d / %d (%.2f%%)" % (dobre, dobre+zle, 100*dobre/(dobre+zle)))
     print("Nasz najlepszy wynik to liczba %d" % rekord)
-    print(dzialania)
