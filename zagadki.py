@@ -1,7 +1,7 @@
 import random
 
 maxl = 3
-liczby = [i for i in range(1, maxl+1)]
+liczby = [i for i in range(maxl+1)]
 
 print("\n\n\nWitaj!")
 print("Wylosuję dla Ciebie jakąś zagadkę matematyczną, zobaczymy czy potrafisz prawidłowo odpowiedzieć, hi, hi, hi!")
@@ -16,12 +16,16 @@ run = True
 while (run):
     
     # Losowania liczby 1 i liczby 2
-    l1 = random.randint(1, maxl)
-    l2 = random.randint(1, maxl)
+    l1 = random.randint(0, maxl)
+    l2 = random.randint(0, maxl)
     
     # Losujemy działania matematyczne: 1+, 2-, 3*, 4/
-    # Aby dzieleniania nie było mało to mały boost! ;)
-    if l1 % l2 == 0 and l2 != 1:
+    # Aby dzielenia nie było za mało to mały boost! ;)
+    if (l1 + l2 > 0) and ((l2 != 0 and l1 % l2 == 0) or (l1 != 0 and l2 % l1 == 0)):
+        # Jeśli dzielenie to większej liczby przez mniejszą dla Ninki
+        if l1 != 0:
+            l1, l2 = l1wieksza(l1, l2)
+        dzialanie = 4
         correct = l1 / l2
         znak = '/'
     else:
