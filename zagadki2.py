@@ -2,6 +2,9 @@ import random
 import numpy as np
 import matplotlib.pyplot as plt
 
+%matplotlib inline
+
+
 # dictionary dla działań
 dzialania = {}
 dzialania[1] = []
@@ -10,17 +13,19 @@ dzialania[3] = []
 dzialania[4] = []
 dzialania_opis = ['dodawanie', 'odejmowanie', 'mnożenie', 'dzielenie']
 
-
-def l1wieksza(l1, l2):
-    if l1 >= l2 and l2 > 0:
+# większa przez mniejszą, lub 0 przez dowolną.
+# nie powinno być sytuacji że obie są 0 (wcześniejszy warunek) ale na wszelki wypadek obsługa: warning i (1,1)
+def do_dzielenia(l1, l2):
+    if (l1 >= l2 and l2 > 0) or l1 == 0:
         return(l1, l2)
-    elif l2 >= l1 and l1 > 0:
+    elif (l2 >= l1 and l1 > 0) or l2 == 0:
         return(l2, l1)
     else:
         print("Warning! both numbers are zeros!")
+        print("l1 = %d, l2 = %d" % (l1, l2))
         return(1, 1)
 
-
+    
 maxl = 3
 liczby = [i for i in range(maxl+1)]
 
@@ -45,7 +50,7 @@ while (run):
     if (l1 + l2 > 0) and ((l2 != 0 and l1 % l2 == 0) or (l1 != 0 and l2 % l1 == 0)):
         # Jeśli dzielenie to większej liczby przez mniejszą dla Ninki
         if l1 != 0:
-            l1, l2 = l1wieksza(l1, l2)
+            l1, l2 = do_dzielenia(l1, l2)
         dzialanie = 4
         correct = l1 / l2
         znak = '/'
