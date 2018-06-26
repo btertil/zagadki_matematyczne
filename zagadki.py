@@ -1,16 +1,28 @@
 import random
 
+
+# dictionary dla działań
+dzialania = {}
+dzialania[1] = []
+dzialania[2] = []
+dzialania[3] = []
+dzialania[4] = []
+dzialania_opis = ['dodawanie', 'odejmowanie', 'mnożenie', 'dzielenie']
+
+
+def l1wieksza(l1, l2):
+    if l1 >= l2 and l2 > 0:
+        return(l1, l2)
+    elif l2 >= l1 and l1 > 0:
+        return(l2, l1)
+    else:
+        print("Warning! both numbers are zeros!")
+        return(1, 1)
+
+
 maxl = 3
 liczby = [i for i in range(maxl+1)]
 
-print("\n\n\nWitaj!")
-print("Wylosuję dla Ciebie jakąś zagadkę matematyczną, zobaczymy czy potrafisz prawidłowo odpowiedzieć, hi, hi, hi!")
-print("Na razie znam tylo liczby: %s, ale jak będziesz dobrze odpowiadać poznam ich więcej!" % liczby)
-print("W każdej chwili możesz zakończyć wpisując \"koniec\", to zaczynajmy :)\n")
-
-dobre = 0
-zle = 0
-rekord = maxl
 
 run = True
 while (run):
