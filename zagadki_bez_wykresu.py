@@ -1,6 +1,4 @@
 import random
-import numpy as np
-import matplotlib.pyplot as plt
 
 
 # dictionary dla działań
@@ -91,78 +89,3 @@ while (run):
 if dobre + zle >= 1:
     print("Prawidłowe odpowiedzi: %d / %d (%.2f%%)" % (dobre, dobre+zle, 100*dobre/(dobre+zle)))
     print("Nasz najlepszy wynik to liczba %d" % rekord)
-    
-    print("\n\n\nTwoje wyniki\n\n")
-    
-    
-    # Przygotowanie danych do wykresów
-
-    # Wykres 1: rozkłady działań (barplot, stacked dla poprawnych i błędnych odpowiedzi)
-
-    # Ze słownika do zmiennych (dodawanie dobrze / źle, odejmowanie dobrze źle itd)
-    d_d = np.array(dzialania[1]).sum()
-    d_z = np.array(dzialania[1]).size - d_d
-    o_d = np.array(dzialania[2]).sum()
-    o_z = np.array(dzialania[2]).size - o_d
-    m_d = np.array(dzialania[3]).sum()
-    m_z = np.array(dzialania[3]).size - m_d
-    z_d = np.array(dzialania[4]).sum()
-    z_z = np.array(dzialania[4]).size - z_d
-
-    # Listy potrzebne do wykresów (stacked barplots)
-    goods = []
-    bads = []
-
-    # Seria poprawnych odpowiedzi, dla 4 działań
-    goods.append(d_d)
-    goods.append(o_d)
-    goods.append(m_d)
-    goods.append(z_d)
-
-    # Seria błędnych odpowiedzi, dla 4 działań
-    bads.append(d_z)
-    bads.append(o_z)
-    bads.append(m_z)
-    bads.append(z_z)
-
-    # Wykres 2: Odsetek błędów
-    ds = np.array(dzialania[1]).mean()
-    os = np.array(dzialania[2]).mean()
-    ms = np.array(dzialania[3]).mean()
-    zs = np.array(dzialania[4]).mean()
-
-    srednie = np.array([ds, os, ms, zs])
-
-
-
-    # Rysowanie wykresów
-
-    fig, ax = plt.subplots(1, 2, figsize=(17, 6))
-
-    # potrzebne aby sformatować słupki i ich opisy (kolejność i labelki!)
-    bars = np.arange(len(dzialania_opis))
-
-    # plt.xticks(range(len(dzialania_opis)), dzialania_opis) <- tak może być bez subplots, ale tu nie da rady!
-    # i trzeba 2 poleceniami:
-    # ax[0].set_xticks(bars)
-    # ax[0].set_xticklabels(dzialania_opis, fontsize=13)
-
-    ax[0].bar(bars, goods, label="poprawne")
-    ax[0].bar(bars, bads, bottom=goods, color='red', label="błędne")
-    ax[0].set_ylabel('Liczba Działań', fontsize=14)
-    ax[0].set_xticks(bars)
-    ax[0].set_xticklabels(dzialania_opis, fontsize=12)
-    ax[0].legend(fontsize=12)
-    ax[0].grid()
-
-    ax[1].bar(bars, srednie)
-    ax[1].bar(bars, 1-srednie, bottom=srednie, color='red')
-    ax[1].set_ylabel('Poprawne vs błędne odpowiedzi', fontsize=14)
-    ax[1].set_ylim([0, 1])
-    ax[1].set
-    ax[1].set_xticks(bars)
-    ax[1].set_xticklabels(dzialania_opis, fontsize=12)
-    ax[1].legend(fontsize=12)
-    ax[1].grid()
-
-    plt.show()
