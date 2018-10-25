@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 
 # dictionary dla działań
-dzialania = {}
+dzialania = dict()
 dzialania[1] = []
 dzialania[2] = []
 dzialania[3] = []
@@ -164,7 +164,6 @@ if dobre + zle >= 1:
     ax[1].set
     ax[1].set_xticks(bars)
     ax[1].set_xticklabels(dzialania_opis, fontsize=12)
-    ax[1].legend(fontsize=12)
     ax[1].grid()
 
     plt.show()
