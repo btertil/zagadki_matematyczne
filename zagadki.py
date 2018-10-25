@@ -13,6 +13,7 @@ dzialania[3] = []
 dzialania[4] = []
 dzialania_opis = ['dodawanie', 'odejmowanie', 'mnożenie', 'dzielenie']
 
+
 # większa przez mniejszą, lub 0 przez dowolną.
 # nie powinno być sytuacji że obie są 0 (wcześniejszy warunek) ale na wszelki wypadek obsługa: warning i (1,1)
 def do_dzielenia(l1, l2):
