@@ -142,6 +142,7 @@ if dobre + zle >= 1:
 
     fig, ax = plt.subplots(1, 2, figsize=(17, 6))
 
+
     # potrzebne aby sformatować słupki i ich opisy (kolejność i labelki!)
     bars = np.arange(len(dzialania_opis))
 
@@ -149,6 +150,9 @@ if dobre + zle >= 1:
     # i trzeba 2 poleceniami:
     # ax[0].set_xticks(bars)
     # ax[0].set_xticklabels(dzialania_opis, fontsize=13)
+
+    plt.suptitle("Twoje prawidłowe odpowiedzi to: %d / %d (%.2f%%), największa poznana liczba: %d"
+                 % (dobre, dobre+zle, 100*dobre/(dobre+zle), rekord), fontsize=16)
 
     ax[0].bar(bars, goods, label="poprawne")
     ax[0].bar(bars, bads, bottom=goods, color='red', label="błędne")
