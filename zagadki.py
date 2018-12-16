@@ -94,11 +94,10 @@ while (run):
 if dobre + zle >= 1:
     print("Prawidłowe odpowiedzi: %d / %d (%.2f%%)" % (dobre, dobre+zle, 100*dobre/(dobre+zle)))
     print("Nasz najlepszy wynik to liczba %d" % rekord)
-    
-    print("\n\n\nTwoje wyniki\n\n")
-    
-    
+
+
     # Przygotowanie danych do wykresów
+    # --------------------------------
 
     # Wykres 1: rozkłady działań (barplot, stacked dla poprawnych i błędnych odpowiedzi)
 
@@ -137,7 +136,6 @@ if dobre + zle >= 1:
     srednie = np.array([ds, os, ms, zs])
 
 
-
     # Rysowanie wykresów
 
     fig, ax = plt.subplots(1, 2, figsize=(17, 6))
@@ -166,7 +164,6 @@ if dobre + zle >= 1:
     ax[1].bar(bars, 1-srednie, bottom=srednie, color='red')
     ax[1].set_ylabel('Poprawne vs błędne odpowiedzi', fontsize=14)
     ax[1].set_ylim([0, 1])
-    ax[1].set
     ax[1].set_xticks(bars)
     ax[1].set_xticklabels(dzialania_opis, fontsize=12)
     ax[1].grid()
